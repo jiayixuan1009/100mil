@@ -60,6 +60,9 @@
 - [53_compare_postfix_seo_handoff_runbook.md](53_compare_postfix_seo_handoff_runbook.md)：Compare 修复后 SEO handoff 预案，定义 `12/12 pass` 后的 URL 优先级和内容交付入口。
 - [54_issue_tracker_sync_protocol.md](54_issue_tracker_sync_protocol.md)：Issue 与 tracker 同步规则，规定 blocker 变化时先改 CSV tracker，再改文档和 GitHub issue。
 - [55_1m_monthly_traffic_target_model.md](55_1m_monthly_traffic_target_model.md)：100 万月流量目标拆解模型，把 clean Direct、compare、converter、blogdetail 和规模化扩展分层说明。
+- [56_raw_import_partial_root_cause.md](56_raw_import_partial_root_cause.md)：raw import partial 根因说明，区分 GA4 元数据跳行、非 UTF-8 文件和预期空导出。
+- [57_direct_held_export_message.md](57_direct_held_export_message.md)：可直接转发给数据团队的 `www` held Direct source/referrer 导出请求。
+- [58_compare_500_engineering_message.md](58_compare_500_engineering_message.md)：可直接转发给工程团队的 compare Next.js `500` 排障请求。
 
 ## 当前原则
 

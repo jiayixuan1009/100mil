@@ -150,7 +150,7 @@ def import_one(conn, row):
         error = ''
     except Exception as exc:
         imported_rows = 0
-        skipped_rows = None
+        skipped_rows = expected_data_rows
         status = 'failed'
         error = f'{exc.__class__.__name__}: {exc}'[:500]
     conn.execute(

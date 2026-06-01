@@ -51,19 +51,18 @@
 
 ### 4. raw layer 已暴露 partial 导入风险
 
-`scripts/ingest_selected_raw_sources.py` 已重跑。75 个 selected raw source 中有 28 个被标记为 `partial`，明细见 `docs/phase3_raw_import_partial_evidence.csv`。
+`scripts/ingest_selected_raw_sources.py` 已重跑。75 个 selected raw source 中有 28 个被标记为 `partial`，明细见 `docs/phase3_raw_import_partial_evidence.csv`，根因说明见 `docs/56_raw_import_partial_root_cause.md`。
 
-这不是说当前所有结论失效，而是说明 raw layer 不能再只写“imported”。后续涉及 GA4 page-location、hostname audit、GSC coverage 的判断，必须同时看 `skipped_rows`：
+这不是说当前所有结论失效，而是说明 raw layer 不能再只写“imported”。后续涉及 GA4 page-location、hostname audit、GSC coverage 的判断，必须同时看 skipped-row 类型：
 
-- GA4 page-location PII/token check 缺 `42` 行，导入率 `99.96%`。
-- hostname audit 缺 `9` 行，导入率 `91.0%`。
-- news GSC coverage examples `41` 行全被跳过，暂不能作为 coverage 证据。
+- 多数 GA4 partial 是导出元数据/空行/总计行被跳过，不等同于业务数据丢失。
+- news GSC coverage examples 是非 UTF-8 编码问题，当前导入 `0` 行，暂不能作为 coverage 证据。
 
 ## 本周最该拍板的事
 
 1. 数据团队按 `docs/50_direct_www_source_export_template.md` 导出五类 held Direct 的 source/referrer。
 2. 工程团队按 `docs/48_compare_nextjs_500_diagnostic_handoff.md` 修 compare 共享 500。
-3. 数据/SEO 复核 `docs/phase3_raw_import_partial_evidence.csv` 中的 28 个 partial source。
+3. 数据/SEO 按 `docs/56_raw_import_partial_root_cause.md` 处理 raw partial source，优先重导非 UTF-8 coverage 文件。
 4. 周报口径立即改为 clean Direct / held Direct / excluded Direct，不再汇报 raw Direct。
 
 ## 对 100 万月流量目标的影响

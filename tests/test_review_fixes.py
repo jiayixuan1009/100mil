@@ -105,7 +105,7 @@ class RawImportManifestTests(unittest.TestCase):
 
         with tempfile.TemporaryDirectory() as tmpdir:
             csv_path = Path(tmpdir) / 'bad.csv'
-            csv_path.write_text('a,b\n1,2\n3\n', encoding='utf-8')
+            csv_path.write_bytes(b'a,b\n1,2\n\xff,3\n')
             conn = duckdb.connect(':memory:')
             raw_import.ensure_manifest(conn)
 
