@@ -51,6 +51,7 @@
 - [44_boss_weekly_reporting_brief.md](44_boss_weekly_reporting_brief.md)：老板周报口径简报，压缩当前最需要决策的结论、风险和所需输入。
 - [45_www_channel_gap_fill.md](45_www_channel_gap_fill.md)：`www` 渠道维度缺口补齐，导入三站 landing-channel workbook 并补主站默认渠道组分析入口。
 - [46_direct_www_action_bucket_pack.md](46_direct_www_action_bucket_pack.md)：`www` Direct 动作桶执行包，把当前证据收口成排除、挂起和暂留三类执行口径。
+- [47_direct_www_held_source_export_request.md](47_direct_www_held_source_export_request.md)：`www` 挂起 Direct 桶导出请求包，把下一轮 `source/referrer` 申请收口到最该先看的路径组。
 
 ## 当前原则
 

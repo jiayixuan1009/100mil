@@ -1,0 +1,8 @@
+export_priority,action_bucket,bucket_rank,path_group,sessions,pct_within_bucket,pct_of_all_held,why_now
+export_now,hold_content_tool_direct,1,swift,211685,46.09,35.12,Single largest held Direct path group and should be first source export target
+export_now,hold_content_tool_direct,2,blogdetail,113103,24.62,18.77,High-volume content bucket with likely mixed intent and attribution
+export_now,hold_content_tool_direct,3,stock,97494,21.23,16.18,Large product-content slice that can materially change clean Direct sizing
+export_now,hold_tool_intent_direct,1,sendmoney,85832,59.85,14.24,Top tool-intent held bucket and likely closest to commercial journeys
+export_now,hold_tool_intent_direct,2,compare,44783,31.23,7.43,Still materially large and tied to an active technical blocker
+export_after_p1,hold_content_tool_direct,4,other,37030,8.06,6.14,Residual mixed paths should be reviewed after the named high-volume groups
+export_after_p1,hold_tool_intent_direct,3,converter,12797,8.92,2.12,Smaller tool bucket can wait until the larger held groups are classified
