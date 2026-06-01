@@ -53,6 +53,8 @@
 - [46_direct_www_action_bucket_pack.md](46_direct_www_action_bucket_pack.md)：`www` Direct 动作桶执行包，把当前证据收口成排除、挂起和暂留三类执行口径。
 - [47_direct_www_held_source_export_request.md](47_direct_www_held_source_export_request.md)：`www` 挂起 Direct 桶导出请求包，把下一轮 `source/referrer` 申请收口到最该先看的路径组。
 - [48_compare_nextjs_500_diagnostic_handoff.md](48_compare_nextjs_500_diagnostic_handoff.md)：Compare Next.js `500` 诊断交接包，记录统一失败指纹并给工程排障顺序。
+- [49_boss_one_page_current_status.md](49_boss_one_page_current_status.md)：老板一页纸当前状态，把 clean Direct、held Direct、compare P0 和本周拍板事项压缩成管理层口径。
+- [50_direct_www_source_export_template.md](50_direct_www_source_export_template.md)：`www` held Direct source/referrer 导出申请模板，可直接发给数据团队执行。
 
 ## 当前原则
 
