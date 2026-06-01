@@ -46,6 +46,7 @@
 - [39_converter_large_pattern_evidence.md](39_converter_large_pattern_evidence.md)：Converter 模板大表证据，补充 Wave 1 技术健康、内链来源和 UX 优先级。
 - [40_compare_postfix_validation_pack.md](40_compare_postfix_validation_pack.md)：Compare 修复后回归验收包，包含 live URL 脚本、DuckDB 复查 SQL 和通过标准。
 - [41_direct_traffic_cleanup_execution_pack.md](41_direct_traffic_cleanup_execution_pack.md)：Direct 流量清洗执行包，把 raw 视图转成清洗口径、任务分桶和老板汇报规则。
+- [42_multi_ai_team_workflow.md](42_multi_ai_team_workflow.md)：多 AI 团队协作工作流，定义如何让不同 AI 在同一仓库里共享规则、优先级和交付方式。
 
 ## 当前原则
 
