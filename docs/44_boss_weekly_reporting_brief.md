@@ -14,6 +14,16 @@
 
 结论：如果继续直接汇报 raw Direct，会把下载回流、活动流量、模板流量和污染 host 当成真实增长。
 
+按最新动作桶口径再收紧一层后，当前更适合作为老板周报 `provisional clean Direct` 的主站候选值只有 `15,671` sessions。
+
+相对地：
+
+- `hold_content_tool_direct`：`459,312` sessions
+- `hold_tool_intent_direct`：`143,412` sessions
+- `exclude_home_unassigned_or_nonclean`：`79,812` sessions
+
+这说明现阶段真正重要的不是放大 raw Direct，而是继续拆掉挂起桶。
+
 ### 2. 主站内容/工具 Direct 大桶已经确认混入非真实直达信号
 
 最新复核显示，`www` 大桶中至少包括：
@@ -66,5 +76,12 @@ live 检查显示：
 
 ## 当前建议汇报口径
 
-- 对外/对老板：`clean Direct`、`host pollution`、`lifecycle/app return`、`needs review`
+- 对外/对老板：`provisional clean Direct`、`host pollution`、`lifecycle/app return`、`held for source review`
 - 对执行团队：继续用 raw 明细排查，但不把 raw Direct 当结果 KPI
+
+当前建议周报字段：
+
+- `provisional_clean_direct = 15,671`
+- `held_for_source_review = 602,724`
+- `excluded_home_nonclean = 79,812`
+- `excluded_lifecycle_or_promo = 26,797`

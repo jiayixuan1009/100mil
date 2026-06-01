@@ -50,6 +50,7 @@
 - [43_direct_www_signal_followup.md](43_direct_www_signal_followup.md)：`www` Direct 大桶信号跟进，补上 query signal 与路径族交叉后的进一步判断。
 - [44_boss_weekly_reporting_brief.md](44_boss_weekly_reporting_brief.md)：老板周报口径简报，压缩当前最需要决策的结论、风险和所需输入。
 - [45_www_channel_gap_fill.md](45_www_channel_gap_fill.md)：`www` 渠道维度缺口补齐，导入三站 landing-channel workbook 并补主站默认渠道组分析入口。
+- [46_direct_www_action_bucket_pack.md](46_direct_www_action_bucket_pack.md)：`www` Direct 动作桶执行包，把当前证据收口成排除、挂起和暂留三类执行口径。
 
 ## 当前原则
 

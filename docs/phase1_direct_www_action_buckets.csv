@@ -1,0 +1,8 @@
+action_bucket,sessions,meaning,next_action
+hold_content_tool_direct,459312,High-volume content or tool paths still counted as Direct but not safe for clean Direct inclusion,Request source or medium or referrer for swift blogdetail stock and other residual paths
+hold_tool_intent_direct,143412,Tool-intent paths such as compare converter and sendmoney should stay out of clean Direct until deeper attribution review,Keep these paths in needs-review reporting and combine with query-signal evidence
+exclude_home_unassigned_or_nonclean,79812,Home or not-set traffic mixed with Unassigned Referral and Organic Social,Exclude from clean Direct baseline and report separately
+review_with_more_source_detail,57810,Residual rows still need source-level review,Use next export to decide keep or exclude
+exclude_promo_announcement,16190,Announcement traffic already behaves like promo rather than clean Direct,Exclude from clean Direct and track as campaign or promo traffic
+keep_home_direct_candidate,15671,Only the Direct slice of home or not-set is the current best clean Direct candidate,Use as provisional clean Direct baseline before finer source review
+exclude_lifecycle_paths,10607,Login download and register routes are lifecycle not acquisition,Exclude from clean Direct and track in lifecycle reporting
