@@ -1,0 +1,30 @@
+surface,status_code,status,indexability,indexability_status,row_count
+compare_response_codes,200,,Indexable,,1515
+compare_response_codes,502,,Non-Indexable,Server Error,1415
+compare_response_codes,0,Timeout expired while waiting for server response.,Non-Indexable,No Response,1155
+compare_response_codes,500,,Non-Indexable,Server Error,553
+compare_response_codes,200,OK,Indexable,,113
+compare_response_codes,301,Moved Permanently,Non-Indexable,Redirected,14
+compare_response_codes,403,Forbidden,Non-Indexable,Client Error,7
+compare_response_codes,500,Internal Server Error,Non-Indexable,Server Error,2
+compare_response_codes,0,Timed Out,Non-Indexable,No Response,2
+compare_response_codes,308,Permanent Redirect,Non-Indexable,Redirected,2
+compare_response_codes,404,,Non-Indexable,Client Error,2
+compare_response_codes,0,DNS lookup failed,Non-Indexable,No Response,1
+compare_response_codes,0,"Cannot invoke ""jakarta.websocket.Session.getRequestURI()"" because ""this.session"" is null",Non-Indexable,No Response,1
+compare_internal_all,200,,Non-Indexable,Canonicalised,29400
+compare_internal_all,200,,Indexable,,3089
+compare_internal_all,502,,Non-Indexable,Server Error,1415
+compare_internal_all,500,,Non-Indexable,Server Error,1281
+compare_internal_all,0,Timeout expired while waiting for server response.,Non-Indexable,No Response,1155
+compare_internal_all,301,Moved Permanently,Non-Indexable,Redirected,14
+compare_internal_all,404,,Non-Indexable,Client Error,4
+compare_internal_all,308,Permanent Redirect,Non-Indexable,Redirected,4
+compare_internal_all,0,Timed Out,Non-Indexable,No Response,2
+compare_internal_all,0,"Cannot invoke ""jakarta.websocket.Session.getRequestURI()"" because ""this.session"" is null",Non-Indexable,No Response,1
+converter_internal_all,200,,Non-Indexable,Canonicalised,30856
+converter_internal_all,200,,Indexable,,3220
+converter_internal_all,0,Timeout expired while waiting for server response.,Non-Indexable,No Response,73
+converter_internal_all,404,,Non-Indexable,Client Error,17
+converter_internal_all,301,Moved Permanently,Non-Indexable,Redirected,16
+converter_internal_all,308,Permanent Redirect,Non-Indexable,Redirected,4

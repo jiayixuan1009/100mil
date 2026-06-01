@@ -1,0 +1,28 @@
+hostname,active_users,new_users,engaged_sessions,events,key_events,revenue,row_count,top_operating_system,hostname_type,include_in_growth_reporting,issue,recommendation
+www.biyapay.com,139940,124425,17106,516380,257402,0.0,8,Windows,production_site,yes,Core production data; keep in clean reporting,Core production hostname
+signup.biyapay.com,7370,9158,5045,51248,21211,0.0,7,Android,conversion_domain,conditional,Conversion/support domain mixes with acquisition views,"Keep for funnel analysis, exclude from SEO landing growth views"
+invest.biyapay.com,7189,5642,2541,45374,12642,0.0,6,Windows,production_site,yes,Core production data; keep in clean reporting,Core production hostname
+active.biyagl.com,3229,3099,2171,26123,8341,0.0,5,Android,non_core_business_or_unknown,review,Non-core business hostname requires manual review,Review manually before inclusion
+prv.cn.biyapay.io,2399,2095,13,7507,4190,0.0,4,Windows,preprod_or_test,no,Preprod/test hostname pollution,Exclude from formal reporting
+www.biyapays.com,1258,1149,257,5644,2376,0.0,5,Windows,external_or_invalid,no,Invalid/external hostname in GA4 export,Exclude from formal reporting
+prv.www.biyapay.io,855,819,63,3335,1674,0.0,4,Windows,preprod_or_test,no,Preprod/test hostname pollution,Exclude from formal reporting
+news.biyapay.com,671,487,324,3585,1133,0.0,7,Windows,production_site,yes,Core production data; keep in clean reporting,Core production hostname
+prv.invest.biyapay.com,122,94,81,1761,278,0.0,3,Windows,preprod_or_test,no,Preprod/test hostname pollution,Exclude from formal reporting
+www.biyaglobal.com,51,49,23,480,101,0.0,6,Macintosh,external_or_invalid,no,Invalid/external hostname in GA4 export,Exclude from formal reporting
+localhost,37,25,183,6717,235,0.0,2,Windows,local_or_internal,no,Local/internal hostname pollution,Exclude from formal reporting
+prv.biyanews.com,37,36,11,254,84,0.0,2,Windows,preprod_or_test,no,Preprod/test hostname pollution,Exclude from formal reporting
+192.168.110.190,22,10,72,1136,122,0.0,3,Macintosh,local_or_internal,no,Local/internal hostname pollution,Exclude from formal reporting
+prv.signup.biya.in,19,19,1,62,38,0.0,4,Windows,preprod_or_test,no,Preprod/test hostname pollution,Exclude from formal reporting
+47.242.151.151,16,10,4,59,20,0.0,4,Windows,external_or_invalid,no,Invalid/external hostname in GA4 export,Exclude from formal reporting
+www-biyapay-com.translate.goog,15,15,3,53,32,0.0,4,iOS,external_or_invalid,no,Invalid/external hostname in GA4 export,Exclude from formal reporting
+47.239.49.149,8,7,1,23,14,0.0,3,Windows,external_or_invalid,no,Invalid/external hostname in GA4 export,Exclude from formal reporting
+prv.active.biyagl.com,6,3,4,80,8,0.0,3,Windows,preprod_or_test,no,Preprod/test hostname pollution,Exclude from formal reporting
+192.168.110.191,4,0,1,15,4,0.0,2,Macintosh,local_or_internal,no,Local/internal hostname pollution,Exclude from formal reporting
+192.168.110.226,3,1,1,208,2,0.0,1,Windows,local_or_internal,no,Local/internal hostname pollution,Exclude from formal reporting
+152.32.173.97,2,2,1,9,5,0.0,1,Windows,external_or_invalid,no,Invalid/external hostname in GA4 export,Exclude from formal reporting
+www.klenotyaurum.cz,2,2,0,6,4,0.0,2,Android,external_or_invalid,no,Invalid/external hostname in GA4 export,Exclude from formal reporting
+generadoritcpower.com,1,1,0,3,2,0.0,1,Android,external_or_invalid,no,Invalid/external hostname in GA4 export,Exclude from formal reporting
+www.creativepromotions.co.uk,1,1,0,3,2,0.0,1,Android,external_or_invalid,no,Invalid/external hostname in GA4 export,Exclude from formal reporting
+www.obchod-vtp.cz,1,1,0,3,2,0.0,1,Android,external_or_invalid,no,Invalid/external hostname in GA4 export,Exclude from formal reporting
+biyapay.com,1,1,1,12,2,0.0,1,Windows,external_or_invalid,no,Invalid/external hostname in GA4 export,Exclude from formal reporting
+dev.invest.biyapay.com,1,0,1,12,1,0.0,1,Windows,preprod_or_test,no,Preprod/test hostname pollution,Exclude from formal reporting

@@ -1,0 +1,7 @@
+{
+  "ga4Mcp.authMethod": "adc",
+  "ga4Mcp.agents.copilot": true,
+  "ga4Mcp.registrationScope": "workspace",
+  "ga4Mcp.autoStart": true,
+  "ga4Mcp.serverLogLevel": "info"
+}

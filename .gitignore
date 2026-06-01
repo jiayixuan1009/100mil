@@ -1,0 +1,15 @@
+.DS_Store
+.secrets/
+secrets/
+.venv/
+*.service-account.json
+*service-account*.json
+application_default_credentials.json
+biyapay-496703-1ca3ea5ead43.json
+biyapay-496703-bfbe66fe5d22.json
+data/warehouse/*.duckdb
+data/warehouse/*.sqlite
+data/warehouse/*.wal
+data/warehouse/catalog_exports/
+data/warehouse/extracts/
+data/warehouse/parquet/
