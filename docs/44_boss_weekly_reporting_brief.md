@@ -24,6 +24,16 @@
 
 结论：这部分不能整体并入 clean Direct，必须继续补 source/referrer 或日志证据。
 
+补充证据：三站 `landing + default channel group` workbook 已导入本地仓库，当前主站工具/内容路径族中，默认渠道组最大的仍是 `Direct`，例如：
+
+- `swift / Direct`：`211,685` sessions
+- `blogdetail / Direct`：`113,103` sessions
+- `stock / Direct`：`97,494` sessions
+- `sendmoney / Direct`：`85,832` sessions
+- `compare / Direct`：`44,783` sessions
+
+这进一步说明主站工具/内容路径正在被 GA4 大规模归进 Direct，但不代表这些都应被当成真实品牌直达；它们仍需结合参数信号、source/referrer 和技术状态继续清洗。
+
 ### 3. compare 仍是模板级 P0 阻塞
 
 live 检查显示：

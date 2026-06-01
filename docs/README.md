@@ -49,6 +49,7 @@
 - [42_multi_ai_team_workflow.md](42_multi_ai_team_workflow.md)：多 AI 团队协作工作流，定义如何让不同 AI 在同一仓库里共享规则、优先级和交付方式。
 - [43_direct_www_signal_followup.md](43_direct_www_signal_followup.md)：`www` Direct 大桶信号跟进，补上 query signal 与路径族交叉后的进一步判断。
 - [44_boss_weekly_reporting_brief.md](44_boss_weekly_reporting_brief.md)：老板周报口径简报，压缩当前最需要决策的结论、风险和所需输入。
+- [45_www_channel_gap_fill.md](45_www_channel_gap_fill.md)：`www` 渠道维度缺口补齐，导入三站 landing-channel workbook 并补主站默认渠道组分析入口。
 
 ## 当前原则
 

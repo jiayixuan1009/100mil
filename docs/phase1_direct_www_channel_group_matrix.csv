@@ -1,0 +1,19 @@
+path_group,default_channel_group,sessions,active_users,interpretation
+swift,Direct,211685,211652,Swift tool pages are heavily counted as Direct and should remain outside clean Direct until source-level review is complete
+blogdetail,Direct,113103,112791,Blog pages show large raw Direct volume but still require source and referrer review
+stock,Direct,97494,97367,Stock traffic remains a major Direct-looking bucket and should be coordinated with overlap review
+sendmoney,Direct,85832,85762,Sendmoney pages are dominated by Direct in default channel grouping but should not be treated as pure brand entry
+home_or_not_set,Unassigned,75538,74946,Unassigned home or not-set traffic is too large to treat as clean Direct
+compare,Direct,44783,44781,Compare pages are counted as Direct at channel-group level even while the template is technically blocked
+other,Direct,37030,34911,Residual Direct pages still need more detailed source or referrer exports
+blogdetail,Organic Search,23900,21976,Blogdetail clearly mixes Organic Search with raw Direct-like traffic
+home_or_not_set,Direct,15671,12383,Core home direct exists but is not the only large home bucket
+other,Organic Search,15397,13364,Residual pages also mix in real Organic Search traffic
+home_or_not_set,Organic Search,13733,10233,Home and not-set traffic mixes Organic Search with Direct and Unassigned
+converter,Direct,12797,12787,Converter pages are substantially Direct at default channel-group level
+announcement,Direct,12146,11607,Announcement pages look Direct in GA4 default channel grouping but already show campaign leakage in query-signal review
+login,Direct,6604,5703,Login paths should remain lifecycle rather than acquisition
+announcement,Unassigned,4044,3681,Announcement pages also have a meaningful Unassigned bucket
+home_or_not_set,Referral,2251,1422,Home and not-set traffic also contains referral carryover
+home_or_not_set,Organic Social,2023,1686,Home traffic also mixes Organic Social
+download,Direct,1361,1107,Download pages should remain separate from clean acquisition reporting
