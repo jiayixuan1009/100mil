@@ -56,6 +56,10 @@
 - [49_boss_one_page_current_status.md](49_boss_one_page_current_status.md)：老板一页纸当前状态，把 clean Direct、held Direct、compare P0 和本周拍板事项压缩成管理层口径。
 - [50_direct_www_source_export_template.md](50_direct_www_source_export_template.md)：`www` held Direct source/referrer 导出申请模板，可直接发给数据团队执行。
 - [51_p0_execution_tracker.md](51_p0_execution_tracker.md)：P0 执行总控 tracker，把 Direct、compare、周报和 SEO handoff 的 owner、状态、下一步和验收标准汇总到一处。
+- [52_direct_held_source_referrer_import_runbook.md](52_direct_held_source_referrer_import_runbook.md)：Direct held source/referrer 回传 CSV 的导入分桶 runbook，配合 `scripts/import_direct_held_source_referrer.py` 使用。
+- [53_compare_postfix_seo_handoff_runbook.md](53_compare_postfix_seo_handoff_runbook.md)：Compare 修复后 SEO handoff 预案，定义 `12/12 pass` 后的 URL 优先级和内容交付入口。
+- [54_issue_tracker_sync_protocol.md](54_issue_tracker_sync_protocol.md)：Issue 与 tracker 同步规则，规定 blocker 变化时先改 CSV tracker，再改文档和 GitHub issue。
+- [55_1m_monthly_traffic_target_model.md](55_1m_monthly_traffic_target_model.md)：100 万月流量目标拆解模型，把 clean Direct、compare、converter、blogdetail 和规模化扩展分层说明。
 
 ## 当前原则
 

@@ -1,0 +1,8 @@
+channel_or_workstream,current_known_value,target_role,next_unlock,success_metric,status
+clean_direct,15671,Trusted baseline not volume driver,Classify five held Direct path groups,clean Direct updated without raw Direct inflation,in_progress
+held_direct_source_review,602724,Recover or exclude misattributed traffic,Data team returns source medium full referrer export,held volume split into clean search app campaign log-review,blocked_on_data
+compare_recovery,0 usable P0 URLs,Recover existing search demand,Engineering fixes shared Next.js 500,12 P0 URLs pass live regression,blocked_on_engineering
+compare_seo_handoff,12 seeded URLs,Convert repaired compare pages into SEO assets,Run post-fix handoff after 12/12 pass,first five URLs ready for CMS handoff,waiting_on_p0
+converter_template_lift,existing Wave 1 assets,Increase already-indexed template traffic,Continue converter rollout while compare is blocked,converter pages pass live metadata and launch tracker,ready
+blogdetail_bridge,high-exposure content paths,Move informational traffic toward product paths,Use source/referrer and bridge modules after Direct cleanup,bridge module handoff for priority blogdetail pages,planned
+programmatic_expansion_reserve,not started,Scale after data trust and templates are healthy,Wait until Direct and compare blockers clear,approved template expansion model,waiting_on_p0

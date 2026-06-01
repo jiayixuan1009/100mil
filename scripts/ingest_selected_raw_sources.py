@@ -89,7 +89,9 @@ def ensure_manifest(conn):
             file_name varchar,
             size_bytes bigint,
             line_count varchar,
+            expected_data_rows bigint,
             imported_rows bigint,
+            skipped_rows bigint,
             parquet_path varchar,
             import_status varchar,
             error varchar,
@@ -97,7 +99,23 @@ def ensure_manifest(conn):
         )
         '''
     )
+    existing_columns = {
+        row[1]
+        for row in conn.execute("pragma table_info('raw_import_manifest')").fetchall()
+    }
+    if 'expected_data_rows' not in existing_columns:
+        conn.execute('alter table raw_import_manifest add column expected_data_rows bigint')
+    if 'skipped_rows' not in existing_columns:
+        conn.execute('alter table raw_import_manifest add column skipped_rows bigint')
     conn.execute('delete from raw_import_manifest')
+
+
+def expected_rows_from_line_count(line_count):
+    try:
+        value = int(line_count)
+    except (TypeError, ValueError):
+        return None
+    return max(value - 1, 0)
 
 
 def import_one(conn, row):
@@ -105,6 +123,7 @@ def import_one(conn, row):
     table_name = table_name_for(relative_path)
     parquet_path = RAW_PARQUET_DIR / f'{table_name}.parquet'
     imported_at = datetime.now(timezone.utc).isoformat()
+    expected_data_rows = expected_rows_from_line_count(row.get('line_count'))
     try:
         conn.execute(f'drop table if exists {qident(table_name)}')
         conn.execute(
@@ -122,15 +141,36 @@ def import_one(conn, row):
         )
         imported_rows = conn.execute(f'select count(*) from {qident(table_name)}').fetchone()[0]
         conn.execute(f'copy {qident(table_name)} to ? (format parquet)', [str(parquet_path)])
-        status = 'imported'
+        skipped_rows = (
+            max(expected_data_rows - imported_rows, 0)
+            if expected_data_rows is not None
+            else None
+        )
+        status = 'partial' if skipped_rows else 'imported'
         error = ''
     except Exception as exc:
         imported_rows = 0
+        skipped_rows = None
         status = 'failed'
         error = f'{exc.__class__.__name__}: {exc}'[:500]
     conn.execute(
         '''
-        insert into raw_import_manifest values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        insert into raw_import_manifest (
+            table_name,
+            source_group,
+            relative_path,
+            absolute_path,
+            file_name,
+            size_bytes,
+            line_count,
+            expected_data_rows,
+            imported_rows,
+            skipped_rows,
+            parquet_path,
+            import_status,
+            error,
+            imported_at_utc
+        ) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         ''',
         [
             table_name,
@@ -140,8 +180,10 @@ def import_one(conn, row):
             row['file_name'],
             row['size_bytes'],
             str(row['line_count'] or ''),
+            expected_data_rows,
             imported_rows,
-            str(parquet_path) if status == 'imported' else '',
+            skipped_rows,
+            str(parquet_path) if status in ('imported', 'partial') else '',
             status,
             error,
             imported_at,
@@ -160,6 +202,7 @@ def create_views(conn):
             round(sum(size_bytes) / 1024.0 / 1024.0, 2) as size_mb,
             sum(imported_rows) as imported_rows,
             sum(case when import_status = 'imported' then 1 else 0 end) as imported_files,
+            sum(case when import_status = 'partial' then 1 else 0 end) as partial_files,
             sum(case when import_status = 'failed' then 1 else 0 end) as failed_files
         from raw_import_manifest
         group by source_group
@@ -169,9 +212,9 @@ def create_views(conn):
     conn.execute(
         '''
         create or replace view v_raw_import_failures as
-        select table_name, source_group, relative_path, error
+        select table_name, source_group, relative_path, import_status, skipped_rows, error
         from raw_import_manifest
-        where import_status = 'failed'
+        where import_status in ('failed', 'partial')
         order by source_group, relative_path
         '''
     )
@@ -180,12 +223,12 @@ def create_views(conn):
         create or replace view v_raw_imported_tables as
         select table_name, source_group, relative_path, imported_rows, round(size_bytes / 1024.0 / 1024.0, 2) as size_mb
         from raw_import_manifest
-        where import_status = 'imported'
+        where import_status in ('imported', 'partial')
         order by source_group, size_bytes desc
         '''
     )
 
-    manifest = dict(conn.execute("select relative_path, table_name from raw_import_manifest where import_status = 'imported'").fetchall())
+    manifest = dict(conn.execute("select relative_path, table_name from raw_import_manifest where import_status in ('imported', 'partial')").fetchall())
 
     def table_for(relative_path):
         table_name = manifest.get(relative_path)
@@ -324,7 +367,7 @@ def main():
     failed = 0
     for row in candidates:
         status, table_name, imported_rows, relative_path, error = import_one(conn, row)
-        if status == 'imported':
+        if status in ('imported', 'partial'):
             imported += 1
             print('imported', table_name, imported_rows, relative_path)
         else:

@@ -34,7 +34,7 @@ with base as (
         end as path_group,
         case
             when query_string = '' then 'no_query_string'
-            when lower(query_string) like '%utm_%' then 'utm_campaign_or_source'
+            when regexp_matches(lower(query_string), '(^|[?&])utm_[^=&]*=') then 'utm_campaign_or_source'
             when lower(query_string) like '%_channel_track_key=%' then 'channel_track_key'
             when lower(query_string) like '%height=44%' or lower(query_string) like '%language=zh-cn%' then 'webview_embed_params'
             when lower(query_string) like '%amount=%' then 'amount_param'

@@ -67,4 +67,4 @@
 1. 更新 `docs/phase3_p0_execution_tracker.csv` 的 `status` 和 `next_action`。
 2. 同步更新 `docs/49_boss_one_page_current_status.md` 的当前老板口径。
 3. 如果 compare 状态变化，重跑 `scripts/validate_compare_live_urls.py` 并更新 issue `#5`。
-4. 如果 Direct 导出回来，新增导入/分析脚本或查询，并更新 issue `#4`。
+4. 如果 Direct 导出回来，运行 `scripts/import_direct_held_source_referrer.py` 并更新 issue `#4`。
