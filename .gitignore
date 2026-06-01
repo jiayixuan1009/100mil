@@ -2,6 +2,8 @@
 .secrets/
 secrets/
 .venv/
+__pycache__/
+*.pyc
 *.service-account.json
 *service-account*.json
 application_default_credentials.json
