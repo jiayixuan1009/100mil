@@ -19,6 +19,8 @@
 
 - `AGENTS.md` 是跨 AI 的共用仓库说明。
 - `.github/copilot-instructions.md` 是 Copilot 的补充层。
+- `.github/instructions/` 提供文件类型级别的明确规则。
+- `.github/prompts/` 提供团队可复用的标准任务入口。
 - `README.md` 和 `docs/README.md` 是项目入口，不承载隐藏规则。
 
 ### 2. 持久化优先于聊天
@@ -91,10 +93,12 @@
 
 1. 读 `AGENTS.md`
 2. 读 `.github/copilot-instructions.md`（如果当前工具支持）
-3. 读 `README.md`
-4. 读 `docs/README.md`
-5. 打开当前 GitHub issue
-6. 只读取最近邻的文档 / SQL / 脚本
+3. 看 `.github/instructions/` 与当前文件类型最相关的规则
+4. 读 `README.md`
+5. 读 `docs/README.md`
+6. 如果当前工具支持 prompt files，优先使用 `.github/prompts/`
+7. 打开当前 GitHub issue
+8. 只读取最近邻的文档 / SQL / 脚本
 
 ## 当前建议
 

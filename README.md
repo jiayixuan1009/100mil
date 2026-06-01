@@ -17,6 +17,8 @@
 
 - `AGENTS.md`：跨工具的仓库级单一事实源。
 - `.github/copilot-instructions.md`：GitHub Copilot 工作区指令。
+- `.github/instructions/`：按 `docs/`、`queries/`、`scripts/` 分类的文件级规则。
+- `.github/prompts/`：团队可复用的标准任务 prompt。
 
 团队如果使用不同 AI，请优先让它们读取这两个文件，再开始具体任务。
 

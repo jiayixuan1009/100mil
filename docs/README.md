@@ -47,6 +47,8 @@
 - [40_compare_postfix_validation_pack.md](40_compare_postfix_validation_pack.md)：Compare 修复后回归验收包，包含 live URL 脚本、DuckDB 复查 SQL 和通过标准。
 - [41_direct_traffic_cleanup_execution_pack.md](41_direct_traffic_cleanup_execution_pack.md)：Direct 流量清洗执行包，把 raw 视图转成清洗口径、任务分桶和老板汇报规则。
 - [42_multi_ai_team_workflow.md](42_multi_ai_team_workflow.md)：多 AI 团队协作工作流，定义如何让不同 AI 在同一仓库里共享规则、优先级和交付方式。
+- [43_direct_www_signal_followup.md](43_direct_www_signal_followup.md)：`www` Direct 大桶信号跟进，补上 query signal 与路径族交叉后的进一步判断。
+- [44_boss_weekly_reporting_brief.md](44_boss_weekly_reporting_brief.md)：老板周报口径简报，压缩当前最需要决策的结论、风险和所需输入。
 
 ## 当前原则
 

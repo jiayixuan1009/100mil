@@ -1,0 +1,7 @@
+query_bucket,sessions,active_users,row_count,interpretation
+no_query_string,588328,570773,70855,Large residual bucket that still needs source or referrer or log follow-up before clean Direct inclusion
+other_query_params,70425,64143,8791,Non-trivial param bucket that likely mixes product state and internal navigation traces
+amount_param,69143,69113,14132,Strong template or calculator intent signal and not a pure brand-direct pattern
+utm_campaign_or_source,5344,4983,169,Campaign-tagged traffic should not remain in clean Direct
+webview_embed_params,2817,2531,37,Clear app or embedded-webview signal that should be split from acquisition reporting
+invite_param,54,53,8,Invite-style lifecycle traffic rather than SEO or brand direct

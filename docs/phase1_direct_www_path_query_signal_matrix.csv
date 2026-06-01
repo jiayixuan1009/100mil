@@ -1,0 +1,21 @@
+path_group,query_bucket,sessions,active_users,interpretation
+blogdetail,no_query_string,136180,133320,Blog pages with direct-style entry need source validation before clean Direct inclusion
+swift,no_query_string,120568,120408,Tool pages show large direct volume without query strings and need deeper attribution review
+other,no_query_string,95561,93324,Residual pages remain the largest unresolved bucket
+stock,no_query_string,80183,79418,Stock traffic should be reviewed together with host-overlap work
+sendmoney,no_query_string,65690,65327,Commercial-intent routes are being counted as Direct and should not be assumed brand traffic
+other,other_query_params,46282,45809,Query-parameter residue indicates internal state or campaign-style traces
+zh_other,no_query_string,41055,35273,Chinese-language residual pages remain a large unresolved bucket
+other,amount_param,24938,24934,Amount-based traffic proves calculator-like behavior inside the unresolved bucket
+compare,amount_param,18386,18371,Compare traffic is strongly amount-driven even though the template is currently broken live
+sendmoney,amount_param,18233,18228,Sendmoney traffic shows calculator-style intent rather than simple direct brand entry
+en_other,no_query_string,15640,14162,English residual pages still require follow-up
+zh_other,other_query_params,11338,7158,Chinese residual pages with params likely contain app, internal state, or campaign traces
+announcement,no_query_string,10516,9450,Announcement pages show direct-style entry but are likely promo or app-share traffic
+converter,amount_param,7465,7459,Converter traffic is heavily amount-parameter driven
+en_other,other_query_params,6815,5518,English residual pages also carry parameter traces
+register,no_query_string,6529,6203,Register paths should remain outside clean acquisition views
+converter,no_query_string,5070,5014,Converter has both amount-driven and non-param direct-style entries
+virtualcard,no_query_string,5064,3600,Virtual card product pages should be treated as product or lifecycle traffic until proven otherwise
+announcement,utm_campaign_or_source,3970,3655,Announcement traffic contains explicit campaign tags and should be removed from clean Direct
+compare,no_query_string,3925,3879,Even compare pages without amount params still look like template traffic not pure brand direct
