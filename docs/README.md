@@ -52,6 +52,7 @@
 - [45_www_channel_gap_fill.md](45_www_channel_gap_fill.md)：`www` 渠道维度缺口补齐，导入三站 landing-channel workbook 并补主站默认渠道组分析入口。
 - [46_direct_www_action_bucket_pack.md](46_direct_www_action_bucket_pack.md)：`www` Direct 动作桶执行包，把当前证据收口成排除、挂起和暂留三类执行口径。
 - [47_direct_www_held_source_export_request.md](47_direct_www_held_source_export_request.md)：`www` 挂起 Direct 桶导出请求包，把下一轮 `source/referrer` 申请收口到最该先看的路径组。
+- [48_compare_nextjs_500_diagnostic_handoff.md](48_compare_nextjs_500_diagnostic_handoff.md)：Compare Next.js `500` 诊断交接包，记录统一失败指纹并给工程排障顺序。
 
 ## 当前原则
 

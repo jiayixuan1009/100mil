@@ -24,6 +24,11 @@ docs/phase3_compare_live_regression_current.csv
 
 - HTTP status
 - final URL
+- response content type
+- server / `x-powered-by`
+- body bytes
+- body SHA-256
+- body preview
 - title
 - meta description
 - H1
@@ -70,7 +75,7 @@ PY
 
 ## 当前状态
 
-截至本包创建时，compare 仍为 P0：12 个目标 URL 的历史 live health 均为 `500 / technical_blocker`。本包应在工程修复后立即重跑，只有 12/12 pass 才能进入 compare SEO handoff。
+截至最新复核，compare 仍为 P0：12 个目标 URL 均为 `500 / fail`，且全部返回同一个 Next.js 运行时指纹：`21` bytes、body preview `Internal Server Error`、body hash `e41656eb2ba6c6293bf6dd928e5a88cdbc50535cab661c1969e0f598e497ed62`。本包应在工程修复后立即重跑，只有 12/12 pass 才能进入 compare SEO handoff。
 
 ## 下一步
 

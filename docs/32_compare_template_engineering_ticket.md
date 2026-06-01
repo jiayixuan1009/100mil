@@ -14,7 +14,10 @@
 
 - `phase2_compare_top30_live_health.csv`
 - `phase2_compare_p0_fix_acceptance.csv`
+- `phase3_compare_live_regression_current.csv`
+- `phase3_compare_live_error_fingerprint.csv`
 - [30_compare_template_p0_health_report.md](30_compare_template_p0_health_report.md)
+- [48_compare_nextjs_500_diagnostic_handoff.md](48_compare_nextjs_500_diagnostic_handoff.md)
 
 ## 影响范围
 
@@ -38,10 +41,16 @@
 所有受检 URL 均为：
 
 - HTTP status：`500`
+- `x-powered-by`：`Next.js`
+- body bytes：`21`
+- body hash：`e41656eb2ba6c6293bf6dd928e5a88cdbc50535cab661c1969e0f598e497ed62`
+- body preview：`Internal Server Error`
 - title：空
 - meta：空
 - canonical：空
 - robots：空
+
+12 个 URL 的响应指纹完全一致，应优先排查 compare 模板共享的 SSR、route parser、数据 provider fallback，而不是逐个页面处理。
 
 ## 业务影响
 
@@ -67,7 +76,13 @@
 
 - 当实时汇率源异常时，不应让整页 500
 - 至少展示降级状态或缓存数据
-- 错误日志要记录 pair、amount、request path
+- 错误日志要记录 pair、amount、request path、route slug、provider response status
+
+### 观测层
+
+- 生产 500 日志可按 `request path`、`pair`、`amount` 检索
+- compare SSR/data-loader 异常必须记录 stack trace
+- provider 返回空值或异常时必须可区分是 provider failure 还是模板渲染 failure
 
 ### SEO 层
 

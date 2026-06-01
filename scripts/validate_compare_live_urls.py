@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import argparse
 import csv
+import hashlib
 import re
 import ssl
 from datetime import datetime, timezone
@@ -74,20 +75,20 @@ def fetch_url(url, timeout):
             content_type = response.headers.get('content-type', '')
             body = response.read(700_000)
             html = body.decode('utf-8', errors='replace') if 'html' in content_type.lower() or body else ''
-            return status, final_url, html, ''
+            return status, final_url, html, '', response.headers, body
     except HTTPError as exc:
         body = exc.read(300_000)
         html = body.decode('utf-8', errors='replace') if body else ''
-        return exc.code, exc.geturl(), html, str(exc.reason or exc)
+        return exc.code, exc.geturl(), html, str(exc.reason or exc), exc.headers, body
     except URLError as exc:
-        return 0, url, '', str(exc.reason or exc)
+        return 0, url, '', str(exc.reason or exc), {}, b''
     except Exception as exc:
-        return 0, url, '', f'{exc.__class__.__name__}: {exc}'
+        return 0, url, '', f'{exc.__class__.__name__}: {exc}', {}, b''
 
 
 def validate_row(row, timeout):
     url = row['url']
-    status, final_url, html, error = fetch_url(url, timeout)
+    status, final_url, html, error, headers, body = fetch_url(url, timeout)
     parser = MetaParser()
     if html:
         parser.feed(html)
@@ -106,6 +107,7 @@ def validate_row(row, timeout):
         'h1_ok': bool(h1),
     }
     health_class = 'pass' if all(checks.values()) else 'fail'
+    body_preview = re.sub(r'\s+', ' ', html).strip()[:180]
     return {
         'checked_at_utc': datetime.now(timezone.utc).isoformat(),
         'priority': row.get('priority', ''),
@@ -115,6 +117,13 @@ def validate_row(row, timeout):
         'avg_position': row.get('avg_position', ''),
         'status': status,
         'final_url': final_url,
+        'content_type': headers.get('content-type', '') if headers else '',
+        'server': headers.get('server', '') if headers else '',
+        'x_powered_by': headers.get('x-powered-by', '') if headers else '',
+        'cache_control': headers.get('cache-control', '') if headers else '',
+        'body_bytes': len(body),
+        'body_sha256': hashlib.sha256(body).hexdigest() if body else '',
+        'body_preview': body_preview,
         'title': title,
         'title_length': len(title),
         'meta_description': meta,

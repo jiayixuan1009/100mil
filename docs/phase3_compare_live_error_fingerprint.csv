@@ -1,0 +1,2 @@
+status,x_powered_by,body_bytes,body_sha256,body_preview,affected_urls,passed_urls,failed_urls,interpretation,next_owner_action
+500,Next.js,21,e41656eb2ba6c6293bf6dd928e5a88cdbc50535cab661c1969e0f598e497ed62,Internal Server Error,12,0,12,All checked compare URLs share the same runtime failure signature,Inspect compare route SSR or data-loading logs by request path pair and amount
