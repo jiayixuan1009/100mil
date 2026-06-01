@@ -86,6 +86,17 @@ def fetch_url(url, timeout):
         return 0, url, '', f'{exc.__class__.__name__}: {exc}', {}, b''
 
 
+def robots_allows_index(robots):
+    if not robots:
+        return False
+    tokens = {
+        token.strip().lower()
+        for token in re.split(r'[,;\s]+', robots)
+        if token.strip()
+    }
+    return 'noindex' not in tokens and ('index' in tokens or 'all' in tokens)
+
+
 def validate_row(row, timeout):
     url = row['url']
     status, final_url, html, error, headers, body = fetch_url(url, timeout)
@@ -103,7 +114,7 @@ def validate_row(row, timeout):
         'title_ok': bool(title),
         'meta_ok': bool(meta),
         'canonical_ok': bool(canonical),
-        'robots_ok': ('index' in robots.lower()) if robots else False,
+        'robots_ok': robots_allows_index(robots),
         'h1_ok': bool(h1),
     }
     health_class = 'pass' if all(checks.values()) else 'fail'

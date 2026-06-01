@@ -49,11 +49,21 @@
 
 这些 compare URL 已有 11 万级 GSC 曝光，但当前页面无法承接点击、抓取和转化。
 
+### 4. raw layer 已暴露 partial 导入风险
+
+`scripts/ingest_selected_raw_sources.py` 已重跑。75 个 selected raw source 中有 28 个被标记为 `partial`，明细见 `docs/phase3_raw_import_partial_evidence.csv`，根因说明见 `docs/56_raw_import_partial_root_cause.md`。
+
+这不是说当前所有结论失效，而是说明 raw layer 不能再只写“imported”。后续涉及 GA4 page-location、hostname audit、GSC coverage 的判断，必须同时看 skipped-row 类型：
+
+- 多数 GA4 partial 是导出元数据/空行/总计行被跳过，不等同于业务数据丢失。
+- news GSC coverage examples 是非 UTF-8 编码问题，当前导入 `0` 行，暂不能作为 coverage 证据。
+
 ## 本周最该拍板的事
 
 1. 数据团队按 `docs/50_direct_www_source_export_template.md` 导出五类 held Direct 的 source/referrer。
 2. 工程团队按 `docs/48_compare_nextjs_500_diagnostic_handoff.md` 修 compare 共享 500。
-3. 周报口径立即改为 clean Direct / held Direct / excluded Direct，不再汇报 raw Direct。
+3. 数据/SEO 按 `docs/56_raw_import_partial_root_cause.md` 处理 raw partial source，优先重导非 UTF-8 coverage 文件。
+4. 周报口径立即改为 clean Direct / held Direct / excluded Direct，不再汇报 raw Direct。
 
 ## 对 100 万月流量目标的影响
 
@@ -72,6 +82,7 @@
 - 已排除首页非 clean：`excluded_home_nonclean = 79,812`
 - 已排除生命周期/活动：`excluded_lifecycle_or_promo = 26,797`
 - 技术 P0：compare 模板统一 Next.js `500`
+- 数据质量 P0：raw selected import 有 `28` 个 partial source，需按 `skipped_rows` 加 caveat
 
 ## 下一次更新标准
 

@@ -1,0 +1,29 @@
+relative_path,source_group,import_status,imported_rows,expected_data_rows,skipped_rows,imported_pct
+ga4/ga4_page_location_pii_token_check_2025-11-20_2026-05-19.csv,ga4,partial,99966,100008,42,99.96
+03 news/gsc/news_coverage_examples.csv,gsc,partial,0,41,41,0.0
+01 www/ga4-organic_top50_landing.csv,ga4,partial,11780,11805,25,99.79
+ga4/_legacy_ga4_4dips/organic_top50_landing.csv .csv,ga4,partial,13469,13494,25,99.81
+01 www/www_ga4_organic_landing_country_device_2025-11-20_2026-05-19.csv,ga4,partial,22982,23004,22,99.9
+5-22/ga4_hostname_audit_28d_2026-04-24_to_2026-05-21.csv,ga4,partial,91,100,9,91.0
+01 www/ga4-conversion_funnel_180d.csv,ga4,partial,162,170,8,95.29
+01 www/ga4-organic_by_country_daily.csv,ga4,partial,7366,7374,8,99.89
+01 www/ga4-organic_daily_180d.csv,ga4,partial,175,183,8,95.63
+01 www/ga4-www_hostname_daily_90d.csv,ga4,partial,90,98,8,91.84
+01 www/www_ga4_organic_landing_key_events_2025-11-20_2026-05-19.csv,ga4,partial,43732,43740,8,99.98
+02 invest/ga4-invest_hostname_daily_90d.csv,ga4,partial,90,98,8,91.84
+02 invest/invest_ga4_landing_event_hostname_channel_2025-11-20_2026-05-19.csv,ga4,partial,4609,4617,8,99.83
+02_invest/ga4/2026-04-28/ga4-invest_hostname_daily_90d.csv,ga4,partial,90,98,8,91.84
+02_invest/ga4/2026-05-19/invest_ga4_landing_event_hostname_channel_2025-11-20_2026-05-19.csv,ga4,partial,4609,4617,8,99.83
+03 news/ga/ga4-organic_by_country_daily.csv,ga4,partial,269,277,8,97.11
+03 news/ga/ga4-organic_daily_180d.csv,ga4,partial,110,118,8,93.22
+03 news/ga/ga4-organic_top50_landing.csv,ga4,partial,138,146,8,94.52
+03 news/news_ga4_landing_event_hostname_channel_2025-11-20_2026-05-19.csv,ga4,partial,4942,4950,8,99.84
+ga4/_legacy_ga4_4dips/conversion_funnel_180d-user_register .csv,ga4,partial,165,173,8,95.38
+ga4/_legacy_ga4_4dips/organic_by_country_daily .csv,ga4,partial,7582,7590,8,99.89
+ga4/_legacy_ga4_4dips/organic_by_device_daily .csv,ga4,partial,513,521,8,98.46
+ga4/_legacy_ga4_4dips/organic_daily_180d .csv,ga4,partial,176,184,8,95.65
+03 news/news_to_invest_ga4_cross_domain_funnel_2025-11-20_2026-05-19.csv,ga4,partial,12,19,7,63.16
+cross/www_to_invest_ga4_cross_domain_funnel_2025-11-20_2026-05-19.csv,ga4,partial,15,22,7,68.18
+03 news/ga/ga4-news_hostname_daily_90d.csv,ga4,partial,93,97,4,95.88
+02 invest/invest_gsc_16m_query_page_date_country_device_2026-05-19/查询数.csv,gsc,partial,1000,1001,1,99.9
+02_invest/gsc/2026-05-19/invest_gsc_16m_query_page_date_country_device_2026-05-19/查询数.csv,gsc,partial,1000,1001,1,99.9

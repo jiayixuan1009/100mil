@@ -1,0 +1,14 @@
+export_field,canonical_column,required,meaning
+date,date,yes,GA4 date for the session or landing record
+hostname,hostname,yes,Must be www.biyapay.com for this import
+landing page + query string,landing_page_query,yes,Landing page plus query string
+session default channel group,default_channel_group,yes,Must be Direct for the scoped export
+session source,source,yes,Session source used for Direct reclassification
+session medium,medium,yes,Session medium used for Direct reclassification
+full referrer,full_referrer,yes,Full referrer used to identify search referral app or campaign leakage
+sessions,sessions,yes,Session count
+campaign,campaign,no,Campaign field used to identify campaign or promo leakage
+source platform,source_platform,no,Source platform used to identify app social or campaign leakage
+page referrer,page_referrer,no,Page referrer used as a secondary referrer signal
+device category,device_category,no,Device category for follow-up analysis
+country,country,no,Country for follow-up analysis
