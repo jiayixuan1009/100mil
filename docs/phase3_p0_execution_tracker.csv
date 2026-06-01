@@ -1,0 +1,7 @@
+priority,workstream,status,owner,next_action,acceptance_check,supporting_artifact,github_issue
+P0,Direct reporting trust,in_progress,seo_data,Use provisional clean Direct and held/excluded buckets in weekly reporting,Weekly report no longer uses raw Direct as KPI,docs/49_boss_one_page_current_status.md,#1
+P0,www held Direct source/referrer export,blocked_on_data,data_team,Export five held Direct path groups with source medium and full referrer,CSV returned with required fields for swift blogdetail stock sendmoney compare,docs/50_direct_www_source_export_template.md,#4
+P0,Compare Next.js 500 fix,blocked_on_engineering,engineering,Debug shared compare SSR route parser data-loader or provider fallback failure,12 P0 compare URLs pass scripts/validate_compare_live_urls.py,docs/48_compare_nextjs_500_diagnostic_handoff.md,#5
+P0,Compare engineering checklist,ready_for_engineering,engineering,Use checklist to verify route amount provider metadata and observability fixes,All checklist rows marked pass and live regression returns 12/12 pass,docs/phase3_compare_engineering_fix_checklist.csv,#5
+P1,Compare SEO handoff,waiting_on_p0,seo_content,Prepare title meta CMS handoff only after compare P0 regression passes,Compare SEO handoff generated after 12/12 pass,docs/40_compare_postfix_validation_pack.md,#5
+P1,Boss weekly status cadence,ready,ops,Use one-page status and tracker as weekly status source,Boss update includes clean Direct held Direct compare pass/fail and next owner,docs/49_boss_one_page_current_status.md,#1

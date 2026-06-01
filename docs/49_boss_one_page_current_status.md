@@ -79,3 +79,5 @@
 
 1. 五类 held Direct 是否已拿到 source/referrer 并重新归类。
 2. compare 12 个 P0 URL 是否达到 `12/12 pass`。
+
+日常执行状态以 `docs/51_p0_execution_tracker.md` 和 `docs/phase3_p0_execution_tracker.csv` 为准，优先更新 P0 blocker 的 owner、next action 和 acceptance check。

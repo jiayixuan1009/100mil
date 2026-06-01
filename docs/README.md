@@ -55,6 +55,7 @@
 - [48_compare_nextjs_500_diagnostic_handoff.md](48_compare_nextjs_500_diagnostic_handoff.md)：Compare Next.js `500` 诊断交接包，记录统一失败指纹并给工程排障顺序。
 - [49_boss_one_page_current_status.md](49_boss_one_page_current_status.md)：老板一页纸当前状态，把 clean Direct、held Direct、compare P0 和本周拍板事项压缩成管理层口径。
 - [50_direct_www_source_export_template.md](50_direct_www_source_export_template.md)：`www` held Direct source/referrer 导出申请模板，可直接发给数据团队执行。
+- [51_p0_execution_tracker.md](51_p0_execution_tracker.md)：P0 执行总控 tracker，把 Direct、compare、周报和 SEO handoff 的 owner、状态、下一步和验收标准汇总到一处。
 
 ## 当前原则
 
