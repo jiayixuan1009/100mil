@@ -1,0 +1,23 @@
+priority_bucket,sessions,active_users,event_count,row_count,reporting_action,owner,top_examples
+review_www_content_or_tool_direct,736111,711596,790582,93992,Do not count as clean Direct until split by path family and referrer/source,SEO + Analytics,/zh/announcement/...; /en/register; /zh/virtualcard/apply
+separate_signup_download_or_fastreg,43262,26736,82197,196,Move to lifecycle or app-return reporting and fix signup attribution continuity,Analytics + Product,signup.biyapay.com/download; /fastreg
+exclude_non_prod_or_external_host,37842,24824,69810,2385,Exclude from clean reporting and audit host ownership,Analytics + Engineering,active.biyagl.com; www.biyapays.com; prv.*; localhost
+keep_core_home_brand_direct,37783,28889,62612,3,Keep in clean Direct baseline and monitor separately as brand/home direct,Analytics,https://www.biyapay.com/; /en; /zh
+review_invest_product_traffic,29141,20341,44708,1119,Separate invest product traffic from main-site SEO growth reporting,Analytics + Invest,invest /en/spot/btc-usd; /zh; /en
+separate_www_auth_download_measurement,26642,22011,38215,22,Exclude auth and download returns from acquisition and repair measurement continuity,Analytics + Product,www /en/login; /zh/login; /login
+separate_or_migrate_legacy_cn_host,25441,21483,33194,1702,Treat as legacy or mirror host until redirect/canonical/reporting policy is confirmed,Analytics + Engineering,cn.biyapay.com /; /login; /assets
+separate_invest_auth_404_download,17763,11741,29944,67,Exclude broken/auth lifecycle routes from acquisition and fix route entry points,Invest + Engineering,invest /en/404; /zh/login; /zh/assets?accountType=0
+other_review,5874,3834,14233,389,Use referrer/source and logs for manual review,Analytics,Unclassified rows outside the main buckets
+review_news_subdomain_direct,2892,1880,4992,89,Keep separate from main-site growth reporting and inspect news handoff,Analytics + Content,news /news; /news/analysis
+fix_signup_cross_domain_or_not_set,11,11,11,2,Fix the remaining signup root measurement edge cases,Analytics,signup /; /registerpriority_bucket,sessions,active_users,event_count,rows,reporting_action,owner,next_step
+review_www_content_or_tool_direct,736111,711596,790582,93992,Hold out of clean Direct until referrer and path-group review is complete,SEO+Analytics,Split into promo tool content and lifecycle sub-buckets
+separate_signup_download_or_fastreg,43262,26736,82197,196,Exclude from acquisition reporting and track as signup or app-return flow,Analytics+Product,Audit signup download deep-link and fastreg continuity
+exclude_non_prod_or_external_host,37842,24824,69810,2385,Exclude from clean reporting immediately,Analytics,Apply hostname exclusion and keep a separate pollution monitor
+keep_core_home_brand_direct,37783,28889,62612,3,Keep in clean Direct baseline,Analytics+SEO,Use as benchmark for true brand direct trend
+review_invest_product_traffic,29141,20341,44708,1119,Do not merge into main-site SEO growth reporting,Analytics+Invest,Review invest product entry and attribution separately
+separate_www_auth_download_measurement,26642,22011,38215,22,Exclude from acquisition reporting and track as lifecycle traffic,Analytics+Product,Split login download and not-set paths into lifecycle reporting
+separate_or_migrate_legacy_cn_host,25441,21483,33194,1702,Keep separate from clean Direct until legacy host strategy is confirmed,Analytics+Engineering,Confirm migration redirect and host ownership for cn.biyapay.com and biyapay.com
+separate_invest_auth_404_download,17763,11741,29944,67,Exclude from growth reporting and track as broken-route or lifecycle traffic,Analytics+Invest,Fix invest 404 or login or download paths and review routing
+other_review,5874,3834,14233,389,Manual review before reporting classification,Analytics,Inspect remaining non-core hosts and low-volume anomalies
+review_news_subdomain_direct,2892,1880,4992,89,Keep separate from main-site clean Direct,Analytics+News,Review whether news direct is true direct or cross-domain carryover
+fix_signup_cross_domain_or_not_set,11,11,11,2,Keep as measurement defect not acquisition,Analytics,Repair signup root or register page attribution

@@ -45,6 +45,7 @@
 - [38_compare_large_pattern_evidence.md](38_compare_large_pattern_evidence.md)：Compare 模板大表证据，补充历史 crawl、server error、canonical 和内链验收要求。
 - [39_converter_large_pattern_evidence.md](39_converter_large_pattern_evidence.md)：Converter 模板大表证据，补充 Wave 1 技术健康、内链来源和 UX 优先级。
 - [40_compare_postfix_validation_pack.md](40_compare_postfix_validation_pack.md)：Compare 修复后回归验收包，包含 live URL 脚本、DuckDB 复查 SQL 和通过标准。
+- [41_direct_traffic_cleanup_execution_pack.md](41_direct_traffic_cleanup_execution_pack.md)：Direct 流量清洗执行包，把 raw 视图转成清洗口径、任务分桶和老板汇报规则。
 
 ## 当前原则
 
