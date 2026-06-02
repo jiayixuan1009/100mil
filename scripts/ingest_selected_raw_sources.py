@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import argparse
+import csv
 import hashlib
 import re
 import sqlite3
@@ -92,6 +93,9 @@ def ensure_manifest(conn):
             expected_data_rows bigint,
             imported_rows bigint,
             skipped_rows bigint,
+            skipped_row_kind varchar,
+            metadata_preamble_rows bigint,
+            malformed_data_rows bigint,
             parquet_path varchar,
             import_status varchar,
             error varchar,
@@ -107,6 +111,12 @@ def ensure_manifest(conn):
         conn.execute('alter table raw_import_manifest add column expected_data_rows bigint')
     if 'skipped_rows' not in existing_columns:
         conn.execute('alter table raw_import_manifest add column skipped_rows bigint')
+    if 'skipped_row_kind' not in existing_columns:
+        conn.execute('alter table raw_import_manifest add column skipped_row_kind varchar')
+    if 'metadata_preamble_rows' not in existing_columns:
+        conn.execute('alter table raw_import_manifest add column metadata_preamble_rows bigint')
+    if 'malformed_data_rows' not in existing_columns:
+        conn.execute('alter table raw_import_manifest add column malformed_data_rows bigint')
     conn.execute('delete from raw_import_manifest')
 
 
@@ -118,12 +128,76 @@ def expected_rows_from_line_count(line_count):
     return max(value - 1, 0)
 
 
+def inspect_csv_shape(path):
+    raw = path.read_bytes()
+    try:
+        text = raw.decode('utf-8-sig')
+        encoding_status = 'utf8'
+    except UnicodeDecodeError:
+        text = raw.decode('latin-1', errors='replace')
+        encoding_status = 'non_utf8'
+
+    rows = list(csv.reader(text.splitlines()))
+    header_index = None
+    for index, values in enumerate(rows):
+        if len(values) > 1 and values[0] and not values[0].lstrip().startswith('#'):
+            header_index = index
+            break
+
+    if header_index is None:
+        return {
+            'expected_data_rows': 0,
+            'metadata_preamble_rows': len(rows),
+            'malformed_data_rows': 0,
+            'encoding_status': encoding_status,
+            'skipped_row_kind': 'expected_empty_export',
+        }
+
+    header_len = len(rows[header_index])
+    data_rows = rows[header_index + 1:]
+    expected_data_rows = 0
+    malformed_data_rows = 0
+    for values in data_rows:
+        if not values or not any(value.strip() for value in values):
+            malformed_data_rows += 1
+        elif len(values) == header_len:
+            expected_data_rows += 1
+        else:
+            malformed_data_rows += 1
+
+    metadata_preamble_rows = header_index
+    if encoding_status == 'non_utf8':
+        skipped_row_kind = 'encoding_blocked'
+    elif expected_data_rows == 0:
+        skipped_row_kind = 'expected_empty_export'
+    elif metadata_preamble_rows:
+        skipped_row_kind = 'metadata_preamble_skipped'
+    elif malformed_data_rows:
+        skipped_row_kind = 'row_rejects'
+    else:
+        skipped_row_kind = 'none'
+
+    return {
+        'expected_data_rows': expected_data_rows,
+        'metadata_preamble_rows': metadata_preamble_rows,
+        'malformed_data_rows': malformed_data_rows,
+        'encoding_status': encoding_status,
+        'skipped_row_kind': skipped_row_kind,
+    }
+
+
 def import_one(conn, row):
     relative_path = row['relative_path']
     table_name = table_name_for(relative_path)
     parquet_path = RAW_PARQUET_DIR / f'{table_name}.parquet'
     imported_at = datetime.now(timezone.utc).isoformat()
-    expected_data_rows = expected_rows_from_line_count(row.get('line_count'))
+    shape = inspect_csv_shape(Path(row['absolute_path']))
+    expected_data_rows = shape['expected_data_rows']
+    metadata_preamble_rows = shape['metadata_preamble_rows']
+    malformed_data_rows = shape['malformed_data_rows']
+    encoding_status = shape['encoding_status']
+    skipped_row_kind = shape['skipped_row_kind']
+    error = ''
     try:
         conn.execute(f'drop table if exists {qident(table_name)}')
         conn.execute(
@@ -146,8 +220,16 @@ def import_one(conn, row):
             if expected_data_rows is not None
             else None
         )
-        status = 'partial' if skipped_rows else 'imported'
-        error = ''
+        if expected_data_rows == 0 and imported_rows == 0:
+            status = 'imported'
+        elif imported_rows == 0 and expected_data_rows:
+            status = 'failed'
+            error = skipped_row_kind
+        elif encoding_status == 'non_utf8':
+            status = 'partial'
+            error = skipped_row_kind
+        else:
+            status = 'partial' if skipped_rows else 'imported'
     except Exception as exc:
         imported_rows = 0
         skipped_rows = expected_data_rows
@@ -166,11 +248,14 @@ def import_one(conn, row):
             expected_data_rows,
             imported_rows,
             skipped_rows,
+            skipped_row_kind,
+            metadata_preamble_rows,
+            malformed_data_rows,
             parquet_path,
             import_status,
             error,
             imported_at_utc
-        ) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         ''',
         [
             table_name,
@@ -183,6 +268,9 @@ def import_one(conn, row):
             expected_data_rows,
             imported_rows,
             skipped_rows,
+            skipped_row_kind,
+            metadata_preamble_rows,
+            malformed_data_rows,
             str(parquet_path) if status in ('imported', 'partial') else '',
             status,
             error,
@@ -203,7 +291,10 @@ def create_views(conn):
             sum(imported_rows) as imported_rows,
             sum(case when import_status = 'imported' then 1 else 0 end) as imported_files,
             sum(case when import_status = 'partial' then 1 else 0 end) as partial_files,
-            sum(case when import_status = 'failed' then 1 else 0 end) as failed_files
+            sum(case when import_status = 'failed' then 1 else 0 end) as failed_files,
+            sum(case when skipped_row_kind = 'encoding_blocked' then 1 else 0 end) as encoding_blocked_files,
+            sum(case when skipped_row_kind = 'metadata_preamble_skipped' then 1 else 0 end) as metadata_preamble_files,
+            sum(case when skipped_row_kind = 'expected_empty_export' then 1 else 0 end) as expected_empty_files
         from raw_import_manifest
         group by source_group
         order by size_mb desc
@@ -212,10 +303,11 @@ def create_views(conn):
     conn.execute(
         '''
         create or replace view v_raw_import_failures as
-        select table_name, source_group, relative_path, import_status, skipped_rows, error
+        select table_name, source_group, relative_path, import_status, skipped_row_kind, skipped_rows, error
         from raw_import_manifest
         where import_status in ('failed', 'partial')
-        order by source_group, relative_path
+           or skipped_row_kind in ('encoding_blocked', 'row_rejects')
+        order by import_status desc, skipped_row_kind, source_group, relative_path
         '''
     )
     conn.execute(
@@ -364,19 +456,23 @@ def main():
     ensure_manifest(conn)
 
     imported = 0
+    partial = 0
     failed = 0
     for row in candidates:
         status, table_name, imported_rows, relative_path, error = import_one(conn, row)
-        if status in ('imported', 'partial'):
+        if status == 'imported':
             imported += 1
             print('imported', table_name, imported_rows, relative_path)
+        elif status == 'partial':
+            partial += 1
+            print('partial', table_name, imported_rows, relative_path, error)
         else:
             failed += 1
             print('failed', table_name, relative_path, error)
 
     create_views(conn)
     conn.close()
-    print('selected_candidates', len(candidates), 'imported', imported, 'failed', failed)
+    print('selected_candidates', len(candidates), 'imported', imported, 'partial', partial, 'failed', failed)
 
 
 if __name__ == '__main__':

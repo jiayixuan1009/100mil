@@ -1,29 +1,30 @@
-relative_path,source_group,import_status,imported_rows,expected_data_rows,skipped_rows,imported_pct
-ga4/ga4_page_location_pii_token_check_2025-11-20_2026-05-19.csv,ga4,partial,99966,100008,42,99.96
-03 news/gsc/news_coverage_examples.csv,gsc,partial,0,41,41,0.0
-01 www/ga4-organic_top50_landing.csv,ga4,partial,11780,11805,25,99.79
-ga4/_legacy_ga4_4dips/organic_top50_landing.csv .csv,ga4,partial,13469,13494,25,99.81
-01 www/www_ga4_organic_landing_country_device_2025-11-20_2026-05-19.csv,ga4,partial,22982,23004,22,99.9
-5-22/ga4_hostname_audit_28d_2026-04-24_to_2026-05-21.csv,ga4,partial,91,100,9,91.0
-01 www/ga4-conversion_funnel_180d.csv,ga4,partial,162,170,8,95.29
-01 www/ga4-organic_by_country_daily.csv,ga4,partial,7366,7374,8,99.89
-01 www/ga4-organic_daily_180d.csv,ga4,partial,175,183,8,95.63
-01 www/ga4-www_hostname_daily_90d.csv,ga4,partial,90,98,8,91.84
-01 www/www_ga4_organic_landing_key_events_2025-11-20_2026-05-19.csv,ga4,partial,43732,43740,8,99.98
-02 invest/ga4-invest_hostname_daily_90d.csv,ga4,partial,90,98,8,91.84
-02 invest/invest_ga4_landing_event_hostname_channel_2025-11-20_2026-05-19.csv,ga4,partial,4609,4617,8,99.83
-02_invest/ga4/2026-04-28/ga4-invest_hostname_daily_90d.csv,ga4,partial,90,98,8,91.84
-02_invest/ga4/2026-05-19/invest_ga4_landing_event_hostname_channel_2025-11-20_2026-05-19.csv,ga4,partial,4609,4617,8,99.83
-03 news/ga/ga4-organic_by_country_daily.csv,ga4,partial,269,277,8,97.11
-03 news/ga/ga4-organic_daily_180d.csv,ga4,partial,110,118,8,93.22
-03 news/ga/ga4-organic_top50_landing.csv,ga4,partial,138,146,8,94.52
-03 news/news_ga4_landing_event_hostname_channel_2025-11-20_2026-05-19.csv,ga4,partial,4942,4950,8,99.84
-ga4/_legacy_ga4_4dips/conversion_funnel_180d-user_register .csv,ga4,partial,165,173,8,95.38
-ga4/_legacy_ga4_4dips/organic_by_country_daily .csv,ga4,partial,7582,7590,8,99.89
-ga4/_legacy_ga4_4dips/organic_by_device_daily .csv,ga4,partial,513,521,8,98.46
-ga4/_legacy_ga4_4dips/organic_daily_180d .csv,ga4,partial,176,184,8,95.65
-03 news/news_to_invest_ga4_cross_domain_funnel_2025-11-20_2026-05-19.csv,ga4,partial,12,19,7,63.16
-cross/www_to_invest_ga4_cross_domain_funnel_2025-11-20_2026-05-19.csv,ga4,partial,15,22,7,68.18
-03 news/ga/ga4-news_hostname_daily_90d.csv,ga4,partial,93,97,4,95.88
-02 invest/invest_gsc_16m_query_page_date_country_device_2026-05-19/查询数.csv,gsc,partial,1000,1001,1,99.9
-02_invest/gsc/2026-05-19/invest_gsc_16m_query_page_date_country_device_2026-05-19/查询数.csv,gsc,partial,1000,1001,1,99.9
+relative_path,source_group,import_status,skipped_row_kind,imported_rows,expected_data_rows,skipped_rows,metadata_preamble_rows,malformed_data_rows,imported_pct,error
+03 news/gsc/news_coverage_examples.csv,gsc,failed,encoding_blocked,0,41,41,0,0,0.0,encoding_blocked
+03 news/ga/ga4-news_hostname_daily_90d.csv,ga4,partial,encoding_blocked,93,91,0,6,0,102.2,encoding_blocked
+ga4/ga4_page_location_pii_token_check_2025-11-20_2026-05-19.csv,ga4,partial,metadata_preamble_skipped,99966,100000,34,6,2,99.97,""
+01 www/ga4-organic_top50_landing.csv,ga4,partial,metadata_preamble_skipped,11780,11797,17,6,2,99.86,""
+ga4/_legacy_ga4_4dips/organic_top50_landing.csv .csv,ga4,partial,metadata_preamble_skipped,13469,13486,17,6,2,99.87,""
+01 www/www_ga4_organic_landing_country_device_2025-11-20_2026-05-19.csv,ga4,partial,metadata_preamble_skipped,22982,22996,14,6,2,99.94,""
+02 invest/invest_gsc_16m_query_page_date_country_device_2026-05-19/搜索结果呈现.csv,gsc,imported,expected_empty_export,0,0,0,0,0,,""
+02_invest/gsc/2026-05-19/invest_gsc_16m_query_page_date_country_device_2026-05-19/搜索结果呈现.csv,gsc,imported,expected_empty_export,0,0,0,0,0,,""
+03 news/news_gsc_16m_query_page_date_country_device_2026-05-19/搜索结果呈现.csv,gsc,imported,expected_empty_export,0,0,0,0,0,,""
+01 www/ga4-conversion_funnel_180d.csv,ga4,imported,metadata_preamble_skipped,162,162,0,6,2,100.0,""
+01 www/ga4-organic_by_country_daily.csv,ga4,imported,metadata_preamble_skipped,7366,7366,0,6,2,100.0,""
+01 www/ga4-organic_daily_180d.csv,ga4,imported,metadata_preamble_skipped,175,175,0,6,2,100.0,""
+01 www/ga4-www_hostname_daily_90d.csv,ga4,imported,metadata_preamble_skipped,90,90,0,6,2,100.0,""
+01 www/www_ga4_organic_landing_key_events_2025-11-20_2026-05-19.csv,ga4,imported,metadata_preamble_skipped,43732,43732,0,6,2,100.0,""
+02 invest/ga4-invest_hostname_daily_90d.csv,ga4,imported,metadata_preamble_skipped,90,90,0,6,2,100.0,""
+02 invest/invest_ga4_landing_event_hostname_channel_2025-11-20_2026-05-19.csv,ga4,imported,metadata_preamble_skipped,4609,4609,0,6,2,100.0,""
+02_invest/ga4/2026-04-28/ga4-invest_hostname_daily_90d.csv,ga4,imported,metadata_preamble_skipped,90,90,0,6,2,100.0,""
+02_invest/ga4/2026-05-19/invest_ga4_landing_event_hostname_channel_2025-11-20_2026-05-19.csv,ga4,imported,metadata_preamble_skipped,4609,4609,0,6,2,100.0,""
+03 news/ga/ga4-organic_by_country_daily.csv,ga4,imported,metadata_preamble_skipped,269,269,0,6,2,100.0,""
+03 news/ga/ga4-organic_daily_180d.csv,ga4,imported,metadata_preamble_skipped,110,110,0,6,2,100.0,""
+03 news/ga/ga4-organic_top50_landing.csv,ga4,imported,metadata_preamble_skipped,138,138,0,6,2,100.0,""
+03 news/news_ga4_landing_event_hostname_channel_2025-11-20_2026-05-19.csv,ga4,imported,metadata_preamble_skipped,4942,4942,0,6,2,100.0,""
+03 news/news_to_invest_ga4_cross_domain_funnel_2025-11-20_2026-05-19.csv,ga4,imported,metadata_preamble_skipped,12,12,0,6,1,100.0,""
+5-22/ga4_hostname_audit_28d_2026-04-24_to_2026-05-21.csv,ga4,imported,metadata_preamble_skipped,91,91,0,9,0,100.0,""
+cross/www_to_invest_ga4_cross_domain_funnel_2025-11-20_2026-05-19.csv,ga4,imported,metadata_preamble_skipped,15,15,0,6,1,100.0,""
+ga4/_legacy_ga4_4dips/conversion_funnel_180d-user_register .csv,ga4,imported,metadata_preamble_skipped,165,165,0,6,2,100.0,""
+ga4/_legacy_ga4_4dips/organic_by_country_daily .csv,ga4,imported,metadata_preamble_skipped,7582,7581,0,7,2,100.01,""
+ga4/_legacy_ga4_4dips/organic_by_device_daily .csv,ga4,imported,metadata_preamble_skipped,513,513,0,6,2,100.0,""
+ga4/_legacy_ga4_4dips/organic_daily_180d .csv,ga4,imported,metadata_preamble_skipped,176,176,0,6,2,100.0,""

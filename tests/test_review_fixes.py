@@ -100,6 +100,51 @@ class QueryRegressionTests(unittest.TestCase):
 
 
 class RawImportManifestTests(unittest.TestCase):
+    def test_csv_shape_ignores_metadata_preamble_rows(self):
+        from scripts import ingest_selected_raw_sources as raw_import
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            csv_path = Path(tmpdir) / 'ga4.csv'
+            csv_path.write_text(
+                '# ----------------------------------------\n'
+                '# Account metadata\n'
+                '\n'
+                '主机名,网页位置,会话数\n'
+                'www.biyapay.com,https://www.biyapay.com/,10\n'
+                'www.biyapay.com,https://www.biyapay.com/en,5\n',
+                encoding='utf-8',
+            )
+
+            shape = raw_import.inspect_csv_shape(csv_path)
+
+        self.assertEqual(shape['expected_data_rows'], 2)
+        self.assertEqual(shape['skipped_row_kind'], 'metadata_preamble_skipped')
+        self.assertEqual(shape['metadata_preamble_rows'], 3)
+
+    def test_csv_shape_flags_non_utf8_as_encoding_blocked(self):
+        from scripts import ingest_selected_raw_sources as raw_import
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            csv_path = Path(tmpdir) / 'latin1.csv'
+            csv_path.write_bytes(b'name,reason\nx,caf\xe9\n')
+
+            shape = raw_import.inspect_csv_shape(csv_path)
+
+        self.assertEqual(shape['expected_data_rows'], 1)
+        self.assertEqual(shape['skipped_row_kind'], 'encoding_blocked')
+
+    def test_csv_shape_marks_header_only_export_as_expected_empty(self):
+        from scripts import ingest_selected_raw_sources as raw_import
+
+        with tempfile.TemporaryDirectory() as tmpdir:
+            csv_path = Path(tmpdir) / 'empty.csv'
+            csv_path.write_text('dimension,metric\n', encoding='utf-8')
+
+            shape = raw_import.inspect_csv_shape(csv_path)
+
+        self.assertEqual(shape['expected_data_rows'], 0)
+        self.assertEqual(shape['skipped_row_kind'], 'expected_empty_export')
+
     def test_manifest_records_partial_import_when_rows_are_skipped(self):
         from scripts import ingest_selected_raw_sources as raw_import
 
@@ -118,12 +163,12 @@ class RawImportManifestTests(unittest.TestCase):
             }
             status, *_ = raw_import.import_one(conn, row)
             manifest = conn.execute(
-                'select import_status, expected_data_rows, skipped_rows from raw_import_manifest'
+                'select import_status, expected_data_rows, skipped_rows, skipped_row_kind, error from raw_import_manifest'
             ).fetchone()
             conn.close()
 
         self.assertEqual(status, 'partial')
-        self.assertEqual(manifest, ('partial', 2, 1))
+        self.assertEqual(manifest, ('partial', 2, 1, 'encoding_blocked', 'encoding_blocked'))
 
 
 if __name__ == '__main__':

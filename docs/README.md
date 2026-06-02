@@ -63,6 +63,7 @@
 - [56_raw_import_partial_root_cause.md](56_raw_import_partial_root_cause.md)：raw import partial 根因说明，区分 GA4 元数据跳行、非 UTF-8 文件和预期空导出。
 - [57_direct_held_export_message.md](57_direct_held_export_message.md)：可直接转发给数据团队的 `www` held Direct source/referrer 导出请求。
 - [58_compare_500_engineering_message.md](58_compare_500_engineering_message.md)：可直接转发给工程团队的 compare Next.js `500` 排障请求。
+- [59_1m_traffic_execution_plan.md](59_1m_traffic_execution_plan.md)：月 100 万总流量执行方案，把当前 P0、现有曝光提效、模板恢复、内容集群和权威增长串成 30/60/90 天路线。
 
 ## 当前原则
 
