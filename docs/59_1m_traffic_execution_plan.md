@@ -12,6 +12,8 @@
 
 配套 CSV：`docs/phase3_1m_traffic_execution_plan.csv`
 
+周执行板：`docs/60_1m_weekly_execution_board.md`
+
 ## 当前判断
 
 现在最重要的不是立刻新增大量页面，而是先把已有资产修到可以承接流量。

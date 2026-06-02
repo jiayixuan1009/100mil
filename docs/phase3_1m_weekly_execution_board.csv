@@ -1,0 +1,6 @@
+priority,workstream,status,this_week_action,owner,escalation_rule,acceptance_check,github_issue
+P0,Direct held source/referrer,blocked_on_data,Send or resend scoped export request for five path groups,data_team,Escalate after 3 working days without CSV or blocker reason,CSV received and passes scripts/import_direct_held_source_referrer.py,#4
+P0,Compare 500 recovery,blocked_on_engineering,Get engineering branch log evidence or release timing,engineering,Escalate after 3 working days without fix status or logs,scripts/validate_compare_live_urls.py returns 12/12 pass,#5
+P0,Raw non-UTF-8 re-export,blocked_on_data,Request UTF-8 re-export for two encoding_blocked sources,seo_data,If unavailable keep both out of final evidence,v_raw_import_failures has no encoding_blocked rows,#1
+P1,Converter and blogdetail execution,ready,Continue launch and bridge module handoff while compare is blocked,seo_content,Do not wait for compare unless page depends on compare route,launch tracker has owner status and observation window,#8
+P1,Top 30 opportunity board,ready,Update owner status next step and 28-day observation window for each URL,seo_content,Escalate URLs without owner after weekly review,Top 30 sheet has no unowned rows,#8
