@@ -4,6 +4,8 @@
 
 配套 CSV：`docs/phase3_1m_monthly_traffic_target_model.csv`
 
+执行方案：`docs/59_1m_traffic_execution_plan.md`
+
 ## 核心判断
 
 100 万月流量不能靠 raw Direct 堆出来。当前策略是先把可运营流量底座修干净，再按已有曝光、模板恢复、内容桥接和规模化页面扩展逐层放大。

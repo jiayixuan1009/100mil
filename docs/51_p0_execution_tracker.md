@@ -9,7 +9,7 @@
 | priority | workstream | status | owner | next_action | acceptance_check |
 |---|---|---|---|---|---|
 | P0 | Direct reporting trust | `in_progress` | seo_data | 周报只用 clean / held / excluded Direct | 周报不再使用 raw Direct 作为 KPI |
-| P0 | Raw import trust | `evidence_ready` | seo_data | 按 root-cause 说明区分 GA4 元数据跳行、非 UTF-8 文件和预期空导出 | partial evidence 与 root-cause 说明已进入线上分支 |
+| P0 | Raw import trust | `classified` | seo_data | 重导 2 个非 UTF-8 source，并继续按 skipped_row_kind 给报告加 caveat | `encoding_blocked` 从 raw import failures 中清零 |
 | P0 | `www` held Direct source/referrer export | `blocked_on_data` | data_team | 按五类路径导出 source / medium / full referrer | CSV 回传且字段完整 |
 | P0 | Compare Next.js 500 fix | `blocked_on_engineering` | engineering | 排查 compare SSR / route parser / data-loader / provider fallback | 12 个 P0 URL 通过 live regression |
 | P0 | Compare engineering checklist | `ready_for_engineering` | engineering | 按 checklist 修 route、amount、provider、metadata、日志 | checklist 全部 pass，live regression `12/12 pass` |
@@ -37,12 +37,13 @@
 
 ### Raw layer 复核输入
 
-`scripts/ingest_selected_raw_sources.py` 已重跑。当前 `75` 个 selected raw source 中有 `28` 个被标记为 `partial`，明细见 `docs/phase3_raw_import_partial_evidence.csv`，根因说明见 `docs/56_raw_import_partial_root_cause.md`。
+`scripts/ingest_selected_raw_sources.py` 已重跑。当前 `75` 个 selected raw source 已分类为 `69 imported / 5 partial / 1 failed`，明细见 `docs/phase3_raw_import_partial_evidence.csv`，根因说明见 `docs/56_raw_import_partial_root_cause.md`。
 
 优先复核：
 
-- 多数 GA4 source 的 skipped rows 是导出元数据/空行/总计行，不等同于业务数据丢失。
+- 24 个 GA4 source 有导出元数据/空行/总计行，20 个干净导入，4 个需要 skipped-row caveat。
 - `03 news/gsc/news_coverage_examples.csv` 是非 UTF-8 编码导致当前 DuckDB 路径导入 `0` 行，不能作为 GSC coverage 证据使用。
+- `03 news/ga/ga4-news_hostname_daily_90d.csv` 可导入但源文件中文标签乱码，应重导 UTF-8 后再作为 hostname 证据。
 
 ### 工程团队输入
 
